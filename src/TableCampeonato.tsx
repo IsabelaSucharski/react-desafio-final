@@ -21,6 +21,7 @@ export const TableCampeonato = ({ campeonato }: IMyProps) => {
           <TableRow>
             <TableCell></TableCell>
             <TableCell></TableCell>
+            <TableCell></TableCell>
             <TableCell align="right">P</TableCell>
             <TableCell align="right">V</TableCell>
             <TableCell align="right">E</TableCell>
@@ -36,7 +37,15 @@ export const TableCampeonato = ({ campeonato }: IMyProps) => {
               key={index}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
-              <TableCell> {index + 1}</TableCell>
+              <TableCell>{index + 1}</TableCell>
+              <TableCell>
+                <img
+                  src={require(`./img/${row.image}`)}
+                  alt="oi"
+                  width="30"
+                  height="30"
+                ></img>
+              </TableCell>
 
               <TableCell component="th" scope="row">
                 {row.teamName}
@@ -47,7 +56,9 @@ export const TableCampeonato = ({ campeonato }: IMyProps) => {
               <TableCell align="right">{row.total_derrotas}</TableCell>
               <TableCell align="right">{row.total_gols_marcados}</TableCell>
               <TableCell align="right">{row.total_gols_sofridos}</TableCell>
-              <TableCell align="right">{row.total_gols_marcados-row.total_gols_sofridos}</TableCell>
+              <TableCell align="right">
+                {row.total_gols_marcados - row.total_gols_sofridos}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

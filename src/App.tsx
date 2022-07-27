@@ -1,10 +1,8 @@
 import React from "react";
 import "./App.css";
-import type { NextPage } from "next";
 import { Home } from "./Home";
 
-const App: NextPage = () => {
-
+const App = () => {
   return <Home />;
 };
 

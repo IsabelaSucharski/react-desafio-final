@@ -1,4 +1,5 @@
 import axiosModule from "axios";
+import { normalizeTextToImageName } from "./helper";
 const axios = axiosModule.create({ baseURL: "http://localhost:3001" });
 
 export async function getCampeonatos(ano: string) {
@@ -23,9 +24,12 @@ export async function getCampeonatos(ano: string) {
           pontuacao_geral_visitante: visitorData,
         } = item;
 
+        const hostNameImage = normalizeTextToImageName(host);
+        const visitorNameImage = normalizeTextToImageName(visitor);
+
         return [
-          { teamName: host, ...hostData },
-          { teamName: visitor, ...visitorData },
+          { teamName: host, image: hostNameImage, ...hostData },
+          { teamName: visitor, image: visitorNameImage, ...visitorData },
         ];
       }
     )
@@ -58,4 +62,5 @@ export interface ICampeonato {
   vitorias_casa: number;
   vitorias_fora_casa: number;
   teamName: string;
+  image: string;
 }
